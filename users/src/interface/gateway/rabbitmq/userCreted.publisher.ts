@@ -1,7 +1,9 @@
-import { Exchanges, RabPublisher, RoutingKeys, UserCreatedEvent } from "ecom-common";
+import { RabPublisher } from "ecom-common";
 
-export class UserCreatedPublisher extends RabPublisher<UserCreatedEvent> {
-  protected exchange: string = Exchanges.USERS
-  protected routingKey: string = RoutingKeys.USER_CREATED
+
+export class UserCreatedPublisher extends RabPublisher {
+  protected exchange: string;
+  protected routingKey: string;
   protected options: Object | undefined;
+  
 }
