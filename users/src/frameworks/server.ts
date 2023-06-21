@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { connectDB } from './config/mongodb';
-import { app } from './config/app';
+import { setupApp } from './config/app';
 import { rabClient } from './config/rabbitmq';
 dotenv.config();
 
@@ -14,6 +14,7 @@ async function bootstrap() {
     throw new Error('RAB_URL must be specified');
   }
   await rabClient.initialize();
+  const app = setupApp();
   await connectDB();
   app.listen(process.env.PORT,  () => console.log('Connected to port ' + process.env.PORT));
 }
